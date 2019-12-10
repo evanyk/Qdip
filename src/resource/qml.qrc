@@ -1,5 +1,7 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
+        <file>component/ItemRect.qml</file>
+        <file>page/IndexPage.qml</file>
     </qresource>
 </RCC>
