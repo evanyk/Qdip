@@ -2,6 +2,7 @@ import QtQuick 2.12
 import "../component"
 
 Item{
+    id: idxPageTopItem
     property list <ItemRect> items: [
         ItemRect {
             title: qsTr("Gray Image")
@@ -15,6 +16,7 @@ Item{
     Grid {
         id: gridBox
         anchors.fill: parent
-        children: parent.items
+        children: idxPageTopItem.items
     }
+
 }

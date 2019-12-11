@@ -10,14 +10,19 @@ set(CMAKE_AUTORCC ON)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
 set(SRC_DIR ${PROJECT_SOURCE_DIR}/src)
 
-file(GLOB_RECURSE SOURCES ${SRC_DIR}/**/*.cpp)
-file(GLOB_RECURSE HEADERS ${SRC_DIR}/include/*.h)
+file(GLOB_RECURSE SOURCES
+    ${SRC_DIR}/implement/*.cpp
+    ${SRC_DIR}/implement/process/*.cpp)
+file(GLOB_RECURSE HEADERS
+    ${SRC_DIR}/include/*.h
+    ${SRC_DIR}/include/process/*.h)
 file(GLOB_RECURSE FORMS ${SRC_DIR}/resource/*.ui)
 file(GLOB_RECURSE RESOURCES ${SRC_DIR}/resource/*.qrc)
 
-set(SRC_FILES ${SOURCES} ${HEADERS} ${FORMS} ${RESOURCES})
+set(SRC_FILES main.cpp ${SOURCES} ${HEADERS} ${FORMS} ${RESOURCES})
 set(QT_PKGS Core Quick)
 set(QT_LIBS Qt5::Core Qt5::Quick)
 
@@ -26,6 +31,7 @@ find_package(Qt5 COMPONENTS ${QT_PKGS} REQUIRED)
 # OpenCV
 find_package(OpenCV)
 include_directories(${OpenCV_INCLUDE_DIRS})
+link_directories(${OpenCV_LIB_DIR})
 
 # Boost
 find_package(Boost)
